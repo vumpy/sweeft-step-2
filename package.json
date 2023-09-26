@@ -1,0 +1,21 @@
+{
+  "name": "step2",
+  "version": "1.0.0",
+  "description": "Sweeft Step 2 Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Giorgi Chutlashvili (Vumpy)",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0",
+    "typescript": "^5.2.2"
+  }
+}
