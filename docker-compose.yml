@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  step2:
+    image: step2
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+
+  db:
+    container_name: "psql"
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres2
+      POSTGRES_USER: postgres
+      POSTGRES_PASS: root
+      DATABASE_URL: postgres://postgres:root@db:5432/postgres2
+      DATABASE_HOST: db
+    volumes:
+      - ~/dbdata:/var/lib/postgresql/data
+    networks:
+      - mynw
+

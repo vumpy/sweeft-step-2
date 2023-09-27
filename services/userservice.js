@@ -2,6 +2,7 @@ const User = require('../models/user');
 const History = require('../models/history');
 const Zone = require('../models/zone');
 const bcypt = require('bcrypt');
+const timer = require('./settime');
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -114,11 +115,7 @@ module.exports = {
             const fair = zone.fair;
 
             for(let i = 0; i < duration; i++) {
-                setTimeout(async (fair, user) => {
-                    const bal = user.balance - fair;
-                    user.balance = bal;
-                    await user.save();
-                }, 1000 * 60 * 60, fair, user);
+                timer(fair, user);
             }
 
             return res.status(200).json({message: "Zone reserved and your balance will be updated"});
