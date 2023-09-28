@@ -7,7 +7,7 @@ export function createTimer(fair: number, user: typeof User) {
         const bal = user.balance - fair;
         user.balance = bal;
         await user.save();
-    }, 30000);
+    }, 1000 * 60 * 60);
 
     return timer;
 };

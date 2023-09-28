@@ -16,7 +16,7 @@ function createTimer(fair, user) {
         const bal = user.balance - fair;
         user.balance = bal;
         yield user.save();
-    }), 30000);
+    }), 1000 * 60 * 60);
     return timer;
 }
 exports.createTimer = createTimer;
