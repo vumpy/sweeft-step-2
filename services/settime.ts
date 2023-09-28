@@ -1,9 +1,13 @@
-const User = require('../models/user');
+const User = require('../models/user')
 
-let timer = setTimeout(async (fair: number, user: typeof User) => {
-    const bal = user.balance - fair;
-    user.balance = bal;
-    await user.save();
-});
+type TimerFunction = (fair: number, user: typeof User) => NodeJS.Timeout;
 
-module.exports = timer;
+export function createTimer(fair: number, user: typeof User) {
+    const timer = setTimeout(async () => {
+        const bal = user.balance - fair;
+        user.balance = bal;
+        await user.save();
+    }, 30000);
+
+    return timer;
+};
